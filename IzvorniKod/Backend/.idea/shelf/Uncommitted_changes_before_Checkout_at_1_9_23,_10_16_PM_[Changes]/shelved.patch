@@ -1,0 +1,137 @@
+Index: src/main/java/progi/service/impl/ClientServiceJPA.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/progi/service/impl/ClientServiceJPA.java b/src/main/java/progi/service/impl/ClientServiceJPA.java
+--- a/src/main/java/progi/service/impl/ClientServiceJPA.java	
++++ b/src/main/java/progi/service/impl/ClientServiceJPA.java	
+@@ -34,7 +34,7 @@
+     private final EntityManager em;
+ 
+     @Autowired
+-    ClientServiceJPA(TrainingRepository trainingRepo, ScheduleRepository scheduleRepo, CoachRepository coachRepo, ClientRepository clientRepo, EntityManager em) {
++    public ClientServiceJPA(TrainingRepository trainingRepo, ScheduleRepository scheduleRepo, CoachRepository coachRepo, ClientRepository clientRepo, EntityManager em) {
+         this.trainingRepo = trainingRepo;
+         this.scheduleRepo = scheduleRepo;
+         this.coachRepo = coachRepo;
+@@ -94,15 +94,12 @@
+                         throw new Exception("Pokušavate dodati rezervaciju za trening koji vam nije dodijeljen!");
+                     }
+                     throw new Exception("Nije moguće rezervirati istu rezervaciju više puta!");
+-
+                 }
+                 throw new Exception("Rezervacija ne postoji!");
+-
+             }
+             throw new Exception("Traženi korisnik ne postoji!");
+         }
+         throw new Exception("Traženi korisnik nema dozvolu!");
+-
+     }
+ 
+     @Override
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	
++++ b/pom.xml	
+@@ -58,7 +58,12 @@
+ 			<artifactId>spring-security-test</artifactId>
+ 			<scope>test</scope>
+ 		</dependency>
+-	</dependencies>
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <scope>test</scope>
++        </dependency>
++    </dependencies>
+ 
+ 	<build>
+ 		<plugins>
+Index: backend-groupfitnessplaner.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend-groupfitnessplaner.iml b/backend-groupfitnessplaner.iml
+--- a/backend-groupfitnessplaner.iml	
++++ b/backend-groupfitnessplaner.iml	
+@@ -1,5 +1,29 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="web" name="Web">
++      <configuration>
++        <webroots />
++        <sourceRoots>
++          <root url="file://$MODULE_DIR$/src/main/java" />
++          <root url="file://$MODULE_DIR$/src/main/resources" />
++        </sourceRoots>
++      </configuration>
++    </facet>
++    <facet type="jpa" name="JPA">
++      <configuration>
++        <setting name="validation-enabled" value="true" />
++        <setting name="provider-name" value="Hibernate" />
++        <datasource-mapping>
++          <factory-entry name="entityManagerFactory" />
++        </datasource-mapping>
++        <naming-strategy-map />
++      </configuration>
++    </facet>
++    <facet type="Spring" name="Spring">
++      <configuration />
++    </facet>
++  </component>
+   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+     <output url="file://$MODULE_DIR$/target/classes" />
+     <output-test url="file://$MODULE_DIR$/target/test-classes" />
+@@ -109,5 +133,7 @@
+     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.security:spring-security-test:5.7.4" level="project" />
+     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.7.4" level="project" />
+     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.7.4" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.2" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: src/main/java/progi/domain/Client.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/progi/domain/Client.java b/src/main/java/progi/domain/Client.java
+--- a/src/main/java/progi/domain/Client.java	
++++ b/src/main/java/progi/domain/Client.java	
+@@ -9,7 +9,7 @@
+ 
+ public class Client extends User {
+ 
+-    @ManyToMany
++    @ManyToMany(fetch = FetchType.EAGER)
+     @JoinTable(
+             name = "CLIENT_SCHEDULES",
+             joinColumns = @JoinColumn(name = "clientID", referencedColumnName = "userID"),
+@@ -28,7 +28,7 @@
+     @JoinColumn(name="NEXT_GOAL")
+     private Goal nextGoal;
+ 
+-    @ManyToMany
++    @ManyToMany(fetch = FetchType.EAGER)
+     @JoinTable(
+             name = "CLIENT_TRAININGS",
+             joinColumns = @JoinColumn(name = "clientID", referencedColumnName = "userID"),
+@@ -36,7 +36,7 @@
+     )
+     private Set<Training> assignedTrainings;
+ 
+-    private int hoursAvailable;
++    private int hoursAvailable = 20;
+ 
+     public Client() {
+ 

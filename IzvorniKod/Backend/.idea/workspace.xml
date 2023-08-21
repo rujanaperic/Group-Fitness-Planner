@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b9f4cdbe-528c-43d4-a22d-b2885224c4da" name="Changes" comment="dodavanje testa provjere promjene cilja (ako cilj nije u bazi podataka), provjera prilikom promjene podataka za username, password i datum">
+      <change beforePath="$PROJECT_DIR$/backend-groupfitnessplaner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-groupfitnessplaner.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$" openResultsInEditor="true" userTempatePath="" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/develop" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="devdocs" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2IjR4fBLDKnDlTRo7GY7s1sgDp4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Frontend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.tools",
+    "spring.configuration.checksum": "a347a3272b736b4c4af6c7a34ae6e302"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="progi" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BackendGroupfitnessplanerApplication">
+    <configuration name="BackendGroupfitnessplanerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend-groupfitnessplaner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="progi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="progi" />
+      <option name="MAIN_CLASS_NAME" value="progi.BackendGroupfitnessplanerApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendGroupfitnessplanerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <module name="backend-groupfitnessplaner" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="progi.BackendGroupfitnessplanerApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="progi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.BackendGroupfitnessplanerApplication" />
+        <item itemvalue="JUnit.BackendGroupfitnessplanerApplicationTests" />
+        <item itemvalue="Spring Boot.BackendGroupfitnessplanerApplication" />
+        <item itemvalue="JUnit.BackendGroupfitnessplanerApplicationTests" />
+        <item itemvalue="Spring Boot.BackendGroupfitnessplanerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9f4cdbe-528c-43d4-a22d-b2885224c4da" name="Changes" comment="" />
+      <created>1670692816148</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670692816148</updated>
+      <workItem from="1670692818164" duration="636000" />
+      <workItem from="1670695020923" duration="2806000" />
+      <workItem from="1670776715224" duration="20044000" />
+      <workItem from="1670865833106" duration="3589000" />
+      <workItem from="1670935506827" duration="345000" />
+      <workItem from="1670935906997" duration="18000" />
+      <workItem from="1670935932950" duration="141000" />
+      <workItem from="1670936094269" duration="150000" />
+      <workItem from="1670936255731" duration="73000" />
+      <workItem from="1670936339322" duration="50000" />
+      <workItem from="1670936415957" duration="62000" />
+      <workItem from="1670936487908" duration="1258000" />
+      <workItem from="1671038246438" duration="4010000" />
+      <workItem from="1671135848528" duration="1291000" />
+      <workItem from="1671207593789" duration="923000" />
+      <workItem from="1671307384385" duration="15764000" />
+      <workItem from="1671375988566" duration="644000" />
+      <workItem from="1671376643318" duration="4168000" />
+      <workItem from="1671469257850" duration="6840000" />
+      <workItem from="1671631780891" duration="2337000" />
+      <workItem from="1671651550016" duration="1112000" />
+      <workItem from="1671657788971" duration="1354000" />
+      <workItem from="1671703298689" duration="349000" />
+      <workItem from="1671708147442" duration="3000" />
+      <workItem from="1672752087755" duration="1934000" />
+      <workItem from="1672824457149" duration="22284000" />
+      <workItem from="1672853177324" duration="40000" />
+      <workItem from="1672853418082" duration="12029000" />
+      <workItem from="1672927578576" duration="713000" />
+      <workItem from="1673038246831" duration="7740000" />
+      <workItem from="1673083444393" duration="3000" />
+      <workItem from="1673190287062" duration="4747000" />
+      <workItem from="1673195413358" duration="6784000" />
+      <workItem from="1673214106013" duration="3176000" />
+      <workItem from="1673258506247" duration="5946000" />
+      <workItem from="1673293227941" duration="2000" />
+      <workItem from="1673293491785" duration="14017000" />
+      <workItem from="1673345224639" duration="7355000" />
+      <workItem from="1673356696086" duration="1357000" />
+      <workItem from="1673382412831" duration="3000" />
+      <workItem from="1673385370966" duration="5057000" />
+      <workItem from="1673426516821" duration="3000" />
+      <workItem from="1673514509074" duration="9307000" />
+    </task>
+    <task id="LOCAL-00001" summary="Provjera i testiranje izrade treninga, izrade rezervacija i uklanjanja, prikaza rezervacija, prikaza treninga, prikaza klijenata">
+      <created>1671322807896</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671322807896</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Popravak verifikacije maila">
+      <created>1671378086321</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671378086321</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Izrada dohvacanja mogucih termina za odrzavanje treninga (prilikom izrade treninga)">
+      <created>1671380041101</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671380041101</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Izrada klase LoggedUser, azuriranje slobodnih mjesta termina treninga (prilikom rezerviranja i otkazivanja termina)">
+      <created>1671482440997</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671482440997</updated>
+    </task>
+    <task id="LOCAL-00005" summary="izmjena fetchanja na /registration/goals">
+      <created>1672752175223</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672752175224</updated>
+    </task>
+    <task id="LOCAL-00006" summary="izrada admina u bazi podataka">
+      <created>1672753946844</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672753946844</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refaktoriranje registracije i potvrde maila, izrada funkcionalnosti za admina (pregled racuna, brisanje, verifkacija trenera)">
+      <created>1672853016153</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672853016153</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ispravak exception handlinga (dodavanje exceptionhandlera unutar registration kontrolera)">
+      <created>1673195869161</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673195869162</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ispravak azuriranja korisnickih podataka, dodavanje schedulera za resetiranje termina treninga svaki 1.dan u mjesecu">
+      <created>1673205967486</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1673205967486</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ispravak promjene cilja, ispravak izrade treninga (svi treninzi imaju fiksno vrijeme od 2h)">
+      <created>1673217794561</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673217794561</updated>
+    </task>
+    <task id="LOCAL-00011" summary="dodan error handling za promjenu podataka">
+      <created>1673258888057</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673258888057</updated>
+    </task>
+    <task id="LOCAL-00012" summary="dodano ogranicenje na broj mogucih rezervacija treninga tjedno (3)">
+      <created>1673293585033</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673293585033</updated>
+    </task>
+    <task id="LOCAL-00013" summary="izmjena nacina racunanja ogranicenja broja rezervacija, te konacna vrijednost (koja je skalirana s fondom sati), izrada testova komponenti (testirane funkcionalnosti servisa trenera, servisa klijenta i kontrolera za prijavu)">
+      <created>1673356381640</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1673356381641</updated>
+    </task>
+    <task id="LOCAL-00014" summary="promjena stringova u intove za primanje json datoteka, ispravak prikaza pogreske">
+      <created>1673391503296</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1673391503296</updated>
+    </task>
+    <task id="LOCAL-00015" summary="dodavanje testa provjere promjene cilja (ako cilj nije u bazi podataka), provjera prilikom promjene podataka za username, password i datum">
+      <created>1673535779949</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1673535779949</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="a39a53a9-10e8-431b-9491-eeb98b2a8270">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/develop" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="a39a53a9-10e8-431b-9491-eeb98b2a8270" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/develop" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Provjera i testiranje izrade treninga, izrade rezervacija i uklanjanja, prikaza rezervacija, prikaza treninga, prikaza klijenata" />
+    <MESSAGE value="Popravak verifikacije maila" />
+    <MESSAGE value="Izrada dohvacanja mogucih termina za odrzavanje treninga (prilikom izrade treninga)" />
+    <MESSAGE value="Izrada klase LoggedUser, azuriranje slobodnih mjesta termina treninga (prilikom rezerviranja i otkazivanja termina)" />
+    <MESSAGE value="izmjena fetchanja na /registration/goals" />
+    <MESSAGE value="izrada admina u bazi podataka" />
+    <MESSAGE value="refaktoriranje registracije i potvrde maila, izrada funkcionalnosti za admina (pregled racuna, brisanje, verifkacija trenera)" />
+    <MESSAGE value="ispravak exception handlinga (dodavanje exceptionhandlera unutar registration kontrolera)" />
+    <MESSAGE value="ispravak azuriranja korisnickih podataka, dodavanje schedulera za resetiranje termina treninga svaki 1.dan u mjesecu" />
+    <MESSAGE value="ispravak promjene cilja, ispravak izrade treninga (svi treninzi imaju fiksno vrijeme od 2h)" />
+    <MESSAGE value="dodan error handling za promjenu podataka" />
+    <MESSAGE value="dodano ogranicenje na broj mogucih rezervacija treninga tjedno (3)" />
+    <MESSAGE value="izmjena nacina racunanja ogranicenja broja rezervacija, te konacna vrijednost (koja je skalirana s fondom sati), izrada testova komponenti (testirane funkcionalnosti servisa trenera, servisa klijenta i kontrolera za prijavu)" />
+    <MESSAGE value="promjena stringova u intove za primanje json datoteka, ispravak prikaza pogreske" />
+    <MESSAGE value="dodavanje testa provjere promjene cilja (ako cilj nije u bazi podataka), provjera prilikom promjene podataka za username, password i datum" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodavanje testa provjere promjene cilja (ako cilj nije u bazi podataka), provjera prilikom promjene podataka za username, password i datum" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/progi/BackendGroupfitnessplanerApplicationTests.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/progi/service/impl/ClientServiceJPA.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/progi/service/impl/CoachServiceJPA.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/progi/service/impl/CoachServiceJPA.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

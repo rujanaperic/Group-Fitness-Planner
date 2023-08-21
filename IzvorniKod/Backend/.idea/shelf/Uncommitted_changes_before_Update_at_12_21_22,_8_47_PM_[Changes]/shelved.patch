@@ -1,0 +1,436 @@
+Index: src/main/java/progi/service/impl/ClientServiceJPA.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package progi.service.impl;\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\nimport progi.domain.*;\nimport progi.repository.ClientRepository;\nimport progi.repository.CoachRepository;\nimport progi.repository.ScheduleRepository;\nimport progi.repository.TrainingRepository;\nimport progi.rest.dto.*;\nimport progi.rest.dto.ClientTraining;\nimport progi.rest.dto.ScheduleTraining;\nimport progi.service.ClientService;\n\nimport javax.persistence.EntityManager;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Optional;\nimport java.util.Set;\n\n@Service\npublic class ClientServiceJPA implements ClientService {\n\n    private final TrainingRepository trainingRepo;\n\n    private final ScheduleRepository scheduleRepo;\n\n    private final CoachRepository coachRepo;\n\n\n    private final ClientRepository clientRepo;\n\n\n    private final EntityManager em;\n\n    @Autowired\n    ClientServiceJPA(TrainingRepository trainingRepo, ScheduleRepository scheduleRepo, CoachRepository coachRepo, ClientRepository clientRepo, EntityManager em) {\n        this.trainingRepo = trainingRepo;\n        this.scheduleRepo = scheduleRepo;\n        this.coachRepo = coachRepo;\n        this.clientRepo = clientRepo;\n        this.em = em;\n    }\n\n    @Override\n    public boolean bookTraining(ScheduleTraining scheduleTraining) {\n        return false;\n    }\n\n\n\n    @Override\n    public List<ClientTraining> getTrainings(UserDataFetching client) throws Exception {\n        if (AuthService.userCheck(client.getUserID(), Role.CLIENT)) {\n            List<Training> trainingList = new ArrayList<Training>(trainingRepo.findClientTrainings(client.getUserID()));\n            List<ClientTraining> clientTrainingList = new ArrayList<ClientTraining>();\n            for(int i = 0; i < trainingList.size(); i++) {\n                Coach coach = coachRepo.findCoachByTrainingID(trainingList.get(i).getTrainingID());\n                clientTrainingList.add(new ClientTraining(trainingList.get(i), coach));\n            }\n            return clientTrainingList;\n        }\n        throw new Exception(\"Traženi korisnik nema dozvolu!\");\n    }\n\n    @Override\n    public Optional<Client> findById(Long userID) {\n        return clientRepo.findById(userID);\n    }\n\n\n\n\n    @Override\n    public Message makeReservation(ClientReservation client) throws Exception {\n        if (AuthService.userCheck(client.getUserID(), Role.CLIENT)) {\n            Optional<Client> clientTest = findById(client.getUserID());\n            if (clientTest.isPresent()) {\n                Client clientDB = clientTest.get();\n                Schedule scheduleToAdd = scheduleRepo.getSchedule(client.getTrainingID(),client.getDate());\n                Set<Training> trainings = clientDB.getAssignedTrainings();\n                if (scheduleToAdd !=null) {\n                    Set<Schedule> clientSchedules = clientDB.getReservations();\n                    if (!clientSchedules.contains(scheduleToAdd)) {\n                        if (trainings.contains(scheduleToAdd.getScheduleID().getTraining())) {\n                            clientSchedules.add(scheduleToAdd);\n                            scheduleToAdd.setSpaceLeft(scheduleToAdd.getSpaceLeft()-1);\n\n                            clientRepo.save(clientDB);\n                            scheduleRepo.save(scheduleToAdd);\n\n                            return new Message(\"Rezervacija uspješno dodana!\");\n                        }\n                        throw new Exception(\"Pokušavate dodati rezervaciju za trening koji vam nije dodijeljen!\");\n                    }\n                    throw new Exception(\"Nije moguće rezervirati istu rezervaciju više puta!\");\n\n                }\n                throw new Exception(\"Rezervacija ne postoji!\");\n\n            }\n            throw new Exception(\"Traženi korisnik ne postoji!\");\n        }\n        throw new Exception(\"Traženi korisnik nema dozvolu!\");\n\n    }\n\n    @Override\n    public Message cancelReservation(ClientReservation client) throws Exception {\n        if (AuthService.userCheck(client.getUserID(), Role.CLIENT)) {\n            Optional<Client> clientTest = findById(client.getUserID());\n            if (clientTest.isPresent()) {\n                Client clientDB = clientTest.get();\n                Schedule scheduleToRemove=scheduleRepo.getSchedule(client.getTrainingID(),client.getDate());\n\n                if (scheduleToRemove !=null) {\n\n                    Set<Schedule> clientSchedules = clientDB.getReservations();\n                    if (clientSchedules.contains(scheduleToRemove)) {\n                        clientSchedules.remove(scheduleToRemove);\n                        scheduleToRemove.setSpaceLeft(scheduleToRemove.getSpaceLeft()+1);\n                        clientRepo.save(clientDB);\n                        scheduleRepo.save(scheduleToRemove);\n                        return new Message(\"Rezervacija uspješno uklonjena!\");\n                    }\n                    throw new Exception(\"Rezervacija za uklanjanje ne postoji!\");\n\n                }\n                throw new Exception(\"Rezervacija ne postoji!\");\n\n\n\n            }\n            throw new Exception(\"Traženi korisnik ne postoji!\");\n        }\n        throw new Exception(\"Traženi korisnik nema dozvolu!\");\n\n    }\n\n    @Override\n    public Set<Schedule> getReservations(UserDataFetching client) throws Exception {\n        if (AuthService.userCheck(client.getUserID(), Role.CLIENT)) {\n            Optional<Client> clientTest = findById(client.getUserID());\n            if (clientTest.isPresent()) {\n                return clientTest.get().getReservations();\n\n            }\n            throw new Exception(\"Traženi korisnik ne postoji!\");\n        }\n        throw new Exception(\"Traženi korisnik nema dozvolu!\");\n    }\n\n\n\n\n    @Override\n    public List<Schedule> getSchedule(UserTrainingDataFetching client) throws Exception {\n        Training trainingTest = trainingRepo.findClientTraining(client.getTrainingID());\n        //Coach coachTest = coachRepo.findCoachByTrainingID(client.getTrainingID());\n        if (trainingTest!=null) {\n            //ClientTraining training = new ClientTraining(trainingTest, coachTest);\n            List<Schedule> schedules= scheduleRepo.findTrainingSchedule(client.getTrainingID());\n            //TrainingSchedules trainingSchedules = new TrainingSchedules(schedules);\n            if (schedules.size()>0)\n                return schedules;\n            throw new Exception(\"Za navedeni trening svi termini za rezervaciju su popunjeni!\");\n        }\n        throw new Exception(\"Za navedenog korisnika ne postoji dodijeljeni trening!\");\n\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/progi/service/impl/ClientServiceJPA.java b/src/main/java/progi/service/impl/ClientServiceJPA.java
+--- a/src/main/java/progi/service/impl/ClientServiceJPA.java	(revision d795eea94ff94aad58face091e8c3a0bbe375761)
++++ b/src/main/java/progi/service/impl/ClientServiceJPA.java	(date 1671633205517)
+@@ -8,8 +8,6 @@
+ import progi.repository.ScheduleRepository;
+ import progi.repository.TrainingRepository;
+ import progi.rest.dto.*;
+-import progi.rest.dto.ClientTraining;
+-import progi.rest.dto.ScheduleTraining;
+ import progi.service.ClientService;
+ 
+ import javax.persistence.EntityManager;
+@@ -48,125 +46,127 @@
+     }
+ 
+ 
+-
+     @Override
+     public List<ClientTraining> getTrainings(UserDataFetching client) throws Exception {
+-        if (AuthService.userCheck(client.getUserID(), Role.CLIENT)) {
+-            List<Training> trainingList = new ArrayList<Training>(trainingRepo.findClientTrainings(client.getUserID()));
+-            List<ClientTraining> clientTrainingList = new ArrayList<ClientTraining>();
+-            for(int i = 0; i < trainingList.size(); i++) {
+-                Coach coach = coachRepo.findCoachByTrainingID(trainingList.get(i).getTrainingID());
+-                clientTrainingList.add(new ClientTraining(trainingList.get(i), coach));
+-            }
+-            return clientTrainingList;
+-        }
+-        throw new Exception("Traženi korisnik nema dozvolu!");
+-    }
++        if (!AuthService.userCheck(client.getUserID(), Role.CLIENT)) {
++            throw new Exception("Traženi korisnik nema dozvolu!");
++        }
+ 
++        List<Training> trainingList = trainingRepo.findClientTrainings(client.getUserID());
++        List<ClientTraining> clientTrainingList = new ArrayList<>();
++
++        for (Training training : trainingList) {
++            Coach coach = coachRepo.findCoachByTrainingID(training.getTrainingID());
++            clientTrainingList.add(new ClientTraining(training, coach));
++        }
++
++        return clientTrainingList;
++    }
++
++
++
++
+     @Override
+     public Optional<Client> findById(Long userID) {
+         return clientRepo.findById(userID);
+     }
+ 
+ 
+-
+-
+     @Override
+     public Message makeReservation(ClientReservation client) throws Exception {
+-        if (AuthService.userCheck(client.getUserID(), Role.CLIENT)) {
+-            Optional<Client> clientTest = findById(client.getUserID());
+-            if (clientTest.isPresent()) {
+-                Client clientDB = clientTest.get();
+-                Schedule scheduleToAdd = scheduleRepo.getSchedule(client.getTrainingID(),client.getDate());
+-                Set<Training> trainings = clientDB.getAssignedTrainings();
+-                if (scheduleToAdd !=null) {
+-                    Set<Schedule> clientSchedules = clientDB.getReservations();
+-                    if (!clientSchedules.contains(scheduleToAdd)) {
+-                        if (trainings.contains(scheduleToAdd.getScheduleID().getTraining())) {
+-                            clientSchedules.add(scheduleToAdd);
+-                            scheduleToAdd.setSpaceLeft(scheduleToAdd.getSpaceLeft()-1);
+-
+-                            clientRepo.save(clientDB);
+-                            scheduleRepo.save(scheduleToAdd);
++        if (!AuthService.userCheck(client.getUserID(), Role.CLIENT)) {
++            throw new Exception("Traženi korisnik nema dozvolu!");
++        }
++
++        Optional<Client> clientTest = findById(client.getUserID());
++        if (!clientTest.isPresent()) {
++            throw new Exception("Traženi korisnik ne postoji!");
++        }
++        Client clientDB = clientTest.get();
++
++        Schedule scheduleToAdd = scheduleRepo.getSchedule(client.getTrainingID(), client.getDate());
++        if (scheduleToAdd == null) {
++            throw new Exception("Rezervacija ne postoji!");
++        }
++
++        Set<Training> trainings = clientDB.getAssignedTrainings();
++        if (!trainings.contains(scheduleToAdd.getScheduleID().getTraining())) {
++            throw new Exception("Pokušavate dodati rezervaciju za trening koji vam nije dodijeljen!");
++        }
++
++        Set<Schedule> clientSchedules = clientDB.getReservations();
++        if (clientSchedules.contains(scheduleToAdd)) {
++            throw new Exception("Nije moguće rezervirati istu rezervaciju više puta!");
++        }
++
++        clientSchedules.add(scheduleToAdd);
++        scheduleToAdd.setSpaceLeft(scheduleToAdd.getSpaceLeft() - 1);
++        clientRepo.save(clientDB);
++        scheduleRepo.save(scheduleToAdd);
+ 
+-                            return new Message("Rezervacija uspješno dodana!");
+-                        }
+-                        throw new Exception("Pokušavate dodati rezervaciju za trening koji vam nije dodijeljen!");
+-                    }
+-                    throw new Exception("Nije moguće rezervirati istu rezervaciju više puta!");
+-
+-                }
+-                throw new Exception("Rezervacija ne postoji!");
++        return new Message("Rezervacija uspješno dodana!");
++    }
+ 
+-            }
+-            throw new Exception("Traženi korisnik ne postoji!");
+-        }
+-        throw new Exception("Traženi korisnik nema dozvolu!");
+-
+-    }
+ 
+     @Override
+     public Message cancelReservation(ClientReservation client) throws Exception {
+-        if (AuthService.userCheck(client.getUserID(), Role.CLIENT)) {
+-            Optional<Client> clientTest = findById(client.getUserID());
+-            if (clientTest.isPresent()) {
+-                Client clientDB = clientTest.get();
+-                Schedule scheduleToRemove=scheduleRepo.getSchedule(client.getTrainingID(),client.getDate());
+-
+-                if (scheduleToRemove !=null) {
++        if (!AuthService.userCheck(client.getUserID(), Role.CLIENT)) {
++            throw new Exception("Traženi korisnik nema dozvolu!");
++        }
++
++        Optional<Client> clientTest = findById(client.getUserID());
++        if (!clientTest.isPresent()) {
++            throw new Exception("Traženi korisnik ne postoji!");
++        }
++        Client clientDB = clientTest.get();
++
++        Schedule scheduleToRemove = scheduleRepo.getSchedule(client.getTrainingID(), client.getDate());
++        if (scheduleToRemove == null) {
++            throw new Exception("Rezervacija ne postoji!");
++        }
+ 
+-                    Set<Schedule> clientSchedules = clientDB.getReservations();
+-                    if (clientSchedules.contains(scheduleToRemove)) {
+-                        clientSchedules.remove(scheduleToRemove);
+-                        scheduleToRemove.setSpaceLeft(scheduleToRemove.getSpaceLeft()+1);
+-                        clientRepo.save(clientDB);
+-                        scheduleRepo.save(scheduleToRemove);
+-                        return new Message("Rezervacija uspješno uklonjena!");
+-                    }
+-                    throw new Exception("Rezervacija za uklanjanje ne postoji!");
+-
+-                }
+-                throw new Exception("Rezervacija ne postoji!");
+-
+-
++        Set<Schedule> clientSchedules = clientDB.getReservations();
++        if (!clientSchedules.contains(scheduleToRemove)) {
++            throw new Exception("Rezervacija za uklanjanje ne postoji!");
++        }
++
++        clientSchedules.remove(scheduleToRemove);
++        scheduleToRemove.setSpaceLeft(scheduleToRemove.getSpaceLeft() + 1);
++        clientRepo.save(clientDB);
++        scheduleRepo.save(scheduleToRemove);
++
++        return new Message("Rezervacija uspješno uklonjena!");
++    }
+ 
+-            }
+-            throw new Exception("Traženi korisnik ne postoji!");
+-        }
+-        throw new Exception("Traženi korisnik nema dozvolu!");
+-
+-    }
+ 
+     @Override
+     public Set<Schedule> getReservations(UserDataFetching client) throws Exception {
+-        if (AuthService.userCheck(client.getUserID(), Role.CLIENT)) {
+-            Optional<Client> clientTest = findById(client.getUserID());
+-            if (clientTest.isPresent()) {
+-                return clientTest.get().getReservations();
++        if (!AuthService.userCheck(client.getUserID(), Role.CLIENT))
++            throw new Exception("Traženi korisnik nema dozvolu!");
++        Optional<Client> clientTest = findById(client.getUserID());
++        if (!clientTest.isPresent()) throw new Exception("Traženi korisnik ne postoji!");
++
++        return clientTest.get().getReservations();
+ 
+-            }
+-            throw new Exception("Traženi korisnik ne postoji!");
+-        }
+-        throw new Exception("Traženi korisnik nema dozvolu!");
++
+     }
+-
+-
+ 
+ 
+     @Override
+     public List<Schedule> getSchedule(UserTrainingDataFetching client) throws Exception {
+-        Training trainingTest = trainingRepo.findClientTraining(client.getTrainingID());
+-        //Coach coachTest = coachRepo.findCoachByTrainingID(client.getTrainingID());
+-        if (trainingTest!=null) {
+-            //ClientTraining training = new ClientTraining(trainingTest, coachTest);
+-            List<Schedule> schedules= scheduleRepo.findTrainingSchedule(client.getTrainingID());
+-            //TrainingSchedules trainingSchedules = new TrainingSchedules(schedules);
+-            if (schedules.size()>0)
+-                return schedules;
++        Training training = trainingRepo.findClientTraining(client.getTrainingID());
++        if (training == null) {
++            throw new Exception("Za navedenog korisnika ne postoji dodijeljeni trening!");
++        }
++
++        List<Schedule> schedules = scheduleRepo.findTrainingSchedule(client.getTrainingID());
++        if (schedules.isEmpty()) {
+             throw new Exception("Za navedeni trening svi termini za rezervaciju su popunjeni!");
+         }
+-        throw new Exception("Za navedenog korisnika ne postoji dodijeljeni trening!");
+ 
++        return schedules;
+     }
++
++
+ 
+ }
+Index: target/classes/application.properties
+===================================================================
+diff --git a/target/classes/application.properties b/target/classes/application.properties
+deleted file mode 100644
+--- a/target/classes/application.properties	(revision d795eea94ff94aad58face091e8c3a0bbe375761)
++++ /dev/null	(revision d795eea94ff94aad58face091e8c3a0bbe375761)
+@@ -1,48 +0,0 @@
+-## Port na kojem ce se vrtiti api
+-## Obavezno izloziti, ovu varijablu koristi Render
+-#server.port=${PORT:8080}
+-#
+-## Korijenska putanja ("prefiks") za sve zahtjeve na backend - preporuca se postaviti ovo zbog proxy konfiguracije
+-## Ako je npr. u controlleru navedena putanja /test, moci ce joj se pristupiti pomocu putanje /api/test
+-##server.servlet.context-path=/api
+-#
+-## Koristi se samo kao primjer koristenja environment varijable unutar TestController klase
+-## SERVER_MESSAGE je sada environment varijabla koja ce se mapirati na property "message", ako nije postavljena uzima se default vrijednost "Hello from backend! "
+-#message=${SERVER_MESSAGE:Hello from backend! }
+-#
+-## Konfiguracija baze podataka
+-## Izlaganje environment varijabli je nuzno da bismo mogli postaviti adresu, korisnicko ime i lozinku baze podataka na produkciji
+-## Stavljanje credentialsa produkcijske baze podataka direktno u kod je jako losa praksa!
+-#spring.sql.init.mode=always
+-#spring.jpa.hibernate.ddl-auto=update
+-#spring.sql.init.platform=postgres
+-#spring.datasource.password=5EbJ8e7GtTHsSiZW2VdLt6zZsH13in60
+-#spring.datasource.username=devups
+-#spring.datasource.url=jdbc:postgresql://dpg-cdqf0l4gqg47to25ei50-a:5432/groupfitnessplaner
+-#spring.datasource.driverClassName=org.postgresql.Driver
+-spring.sql.init.mode=always
+-spring.jpa.defer-datasource-initialization=true
+-spring.jpa.hibernate.ddl-auto=update
+-spring.datasource.url=jdbc:h2:mem:testdb
+-spring.datasource.driverClassName=org.h2.Driver
+-spring.datasource.username=sa
+-
+-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+-spring.h2.console.enabled=true
+-
+-
+-spring.security.enabled=true
+-
+-security.rule.coach = /coach/**, COACH
+-
+-
+-
+-#SMTP SERVER PROPERTIJI, NE UTJECU NA TO HOCE LI SE MOCI DEPLOYATI ILI NE
+-spring.mail.host=smtp.gmail.com
+-spring.mail.port=587
+-spring.mail.username=groupfitnessplaner@gmail.com
+-spring.mail.password=tsdjpxtjdiyibjjx
+-spring.mail.properties.mail.smtp.auth=true
+-spring.mail.properties.mail.smtp.starttls.enable=true
+-spring.messages.encoding=UTF-8
+-spring.messages.fallback-to-system-locale=true
+Index: backend-groupfitnessplaner.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend-groupfitnessplaner.iml b/backend-groupfitnessplaner.iml
+deleted file mode 100644
+--- a/backend-groupfitnessplaner.iml	(revision d795eea94ff94aad58face091e8c3a0bbe375761)
++++ /dev/null	(revision d795eea94ff94aad58face091e8c3a0bbe375761)
+@@ -1,113 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+-    <output url="file://$MODULE_DIR$/target/classes" />
+-    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+-      <excludeFolder url="file://$MODULE_DIR$/target" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.postgresql:postgresql:42.3.7" level="project" />
+-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.5.0" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.7" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:4.0.3" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: jakarta.transaction:jakarta.transaction-api:1.3.3" level="project" />
+-    <orderEntry type="library" name="Maven: jakarta.persistence:jakarta.persistence-api:2.2.3" level="project" />
+-    <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.6.12.Final" level="project" />
+-    <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" level="project" />
+-    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.18" level="project" />
+-    <orderEntry type="library" name="Maven: antlr:antlr:2.7.7" level="project" />
+-    <orderEntry type="library" name="Maven: org.jboss:jandex:2.4.2.Final" level="project" />
+-    <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.5.1" level="project" />
+-    <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.1.2.Final" level="project" />
+-    <orderEntry type="library" name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.7" level="project" />
+-    <orderEntry type="library" name="Maven: org.glassfish.jaxb:txw2:2.3.7" level="project" />
+-    <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:3.0.12" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.11" level="project" />
+-    <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.11" level="project" />
+-    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-to-slf4j:2.17.2" level="project" />
+-    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.17.2" level="project" />
+-    <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.36" level="project" />
+-    <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:1.3.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.30" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.7.4" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.7.4" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-validation:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.68" level="project" />
+-    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.2.5.Final" level="project" />
+-    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.4.2" level="project" />
+-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.4" level="project" />
+-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.4" level="project" />
+-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.4" level="project" />
+-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.4" level="project" />
+-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.13.4" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.68" level="project" />
+-    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.68" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-mail:2.7.5" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: com.sun.mail:jakarta.mail:1.6.7" level="project" />
+-    <orderEntry type="library" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
+-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:2.1.214" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.7.5" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.7.5" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.7.5" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: com.jayway.jsonpath:json-path:2.7.0" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.4.8" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:2.4.8" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:9.1" level="project" />
+-    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
+-    <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.22.0" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest:2.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-params:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:4.5.1" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.12.18" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:3.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:4.5.1" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.skyscreamer:jsonassert:1.5.1" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.23" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.23" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.23" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.9.0" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.security:spring-security-test:5.7.4" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.7.4" level="project" />
+-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.7.4" level="project" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: target/classes/data.sql
+===================================================================
+diff --git a/target/classes/data.sql b/target/classes/data.sql
+deleted file mode 100644
+--- a/target/classes/data.sql	(revision d795eea94ff94aad58face091e8c3a0bbe375761)
++++ /dev/null	(revision d795eea94ff94aad58face091e8c3a0bbe375761)
+@@ -1,14 +0,0 @@
+-INSERT INTO goals(goal_name) VALUES
+-('povećanje mišićne mase'),
+-('kardio');
+-
+-
+-INSERT INTO workout_type(workout_type) VALUES
+-('kardio'),
+-('bodyweight'),
+-('snaga');
+-
+-INSERT INTO workouts(workout_name, workout_typeid) VALUES
+-('vježba sa utezima od 5kg', SELECT typeID FROM workout_type WHERE workout_type='snaga'),
+-('vježba sa utezima od 10kg', SELECT typeID FROM workout_type WHERE workout_type='snaga');
+-

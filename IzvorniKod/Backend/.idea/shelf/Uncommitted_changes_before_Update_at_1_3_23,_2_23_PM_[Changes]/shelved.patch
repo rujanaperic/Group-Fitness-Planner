@@ -1,0 +1,303 @@
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	
+@@ -1,58 +1,58 @@
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\Client.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\impl\AuthService.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\BackendGroupfitnessplanerApplication.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\repository\WorkoutRepository.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\LoginForm.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\Training.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\VerificationToken.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\repository\UserRepository.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\OnRegistrationCompleteEvent.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\UserScheduleDataFetching.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\UserHoursDataFetching.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\UserDataFetching.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\impl\GoalServiceJPA.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\impl\VerificationServiceJPA.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\ClientRegistration.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\ClientService.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\UserRegistrationException.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\WorkoutType.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\impl\ScheduleServiceJPA.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\VerificationService.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\ClientTraining.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\ScheduleTraining.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\Schedule.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\TrainingSchedules.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\ClientReservation.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\UserRegistration.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\ScheduleService.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\Message.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\CoachController.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\Coach.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\Goal.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\security\WebSecurityBasic.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\RegistrationController.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\LoginController.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\UserTrainingDataFetching.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\repository\ClientRepository.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\LoggedUser.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\CoachService.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\repository\CoachRepository.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\RegistrationListener.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\composite\ScheduleID.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\WebConfig.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\UserService.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\Role.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\ClientController.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\DataLoader.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\AssignTraining.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\impl\CoachServiceJPA.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\Workout.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\rest\dto\CoachRegistration.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\domain\User.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\repository\TrainingRepository.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\repository\ScheduleRepository.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\impl\ClientServiceJPA.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\GoalService.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\service\impl\UserServiceJPA.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\repository\GoalRepository.java
+-C:\Users\nikas\OneDrive\Desktop\FAKS SVE\3.godina\5.semestar\PROGI\projekt\local_repo\group-fitness-planer\Backend\src\main\java\progi\repository\VerificationRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/impl/GoalServiceJPA.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/ClientTraining.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/CoachService.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/UserService.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/LoggedUser.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/CoachController.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/ClientController.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/AssignTraining.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/impl/UserServiceJPA.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/repository/UserRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/ScheduleTraining.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/UserHoursDataFetching.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/Client.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/UserScheduleDataFetching.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/impl/ScheduleServiceJPA.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/repository/VerificationRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/impl/AuthService.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/Schedule.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/ClientRegistration.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/UserDataFetching.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/Role.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/User.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/WorkoutType.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/repository/CoachRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/GoalService.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/OnRegistrationCompleteEvent.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/Message.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/LoginController.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/BackendGroupfitnessplanerApplication.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/WebConfig.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/ClientService.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/ScheduleService.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/Goal.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/Coach.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/repository/GoalRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/composite/ScheduleID.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/impl/ClientServiceJPA.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/Workout.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/repository/TrainingRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/UserRegistration.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/Training.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/RegistrationController.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/security/WebSecurityBasic.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/UserTrainingDataFetching.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/repository/ScheduleRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/DataLoader.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/VerificationService.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/domain/VerificationToken.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/RegistrationListener.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/impl/CoachServiceJPA.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/CoachRegistration.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/repository/WorkoutRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/LoginForm.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/repository/ClientRepository.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/UserRegistrationException.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/service/impl/VerificationServiceJPA.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/ClientReservation.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/main/java/progi/rest/dto/TrainingSchedules.java
+Index: ../Frontend/groupfitness_ui/src/components/registration.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Frontend/groupfitness_ui/src/components/registration.jsx b/../Frontend/groupfitness_ui/src/components/registration.jsx
+--- a/../Frontend/groupfitness_ui/src/components/registration.jsx	
++++ b/../Frontend/groupfitness_ui/src/components/registration.jsx	
+@@ -27,8 +27,8 @@
+   };
+ 
+   const goalsdata = async () => {
+-    const { data1 } = await axios.get('http://localhost:8080/registration/goals');
+-    setGoals(data1);
++    const { data } = await axios.get('http://localhost:8080/registration/goals');
++    setGoals(data);
+   };
+ 
+   function onChange(event) {
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	
+@@ -1,57 +1,0 @@
+-progi\service\ClientService.class
+-progi\DataLoader.class
+-progi\domain\Workout.class
+-progi\repository\ClientRepository.class
+-progi\rest\ClientController.class
+-progi\rest\dto\AssignTraining.class
+-progi\service\GoalService.class
+-progi\repository\VerificationRepository.class
+-progi\domain\Role.class
+-progi\rest\RegistrationController.class
+-progi\service\UserRegistrationException.class
+-progi\rest\dto\LoggedUser.class
+-progi\rest\dto\ClientTraining.class
+-progi\rest\dto\ScheduleTraining.class
+-progi\rest\dto\LoginForm.class
+-progi\repository\ScheduleRepository.class
+-progi\domain\WorkoutType.class
+-progi\rest\dto\UserTrainingDataFetching.class
+-progi\service\impl\GoalServiceJPA.class
+-progi\service\impl\UserServiceJPA.class
+-progi\service\CoachService.class
+-progi\repository\CoachRepository.class
+-progi\domain\Goal.class
+-progi\rest\dto\UserScheduleDataFetching.class
+-progi\rest\dto\ClientRegistration.class
+-progi\rest\dto\ClientReservation.class
+-progi\domain\Training.class
+-progi\rest\dto\UserDataFetching.class
+-progi\service\impl\AuthService.class
+-progi\BackendGroupfitnessplanerApplication.class
+-progi\service\impl\CoachServiceJPA.class
+-progi\rest\dto\RegistrationListener.class
+-progi\service\VerificationService.class
+-progi\rest\dto\OnRegistrationCompleteEvent.class
+-progi\service\ScheduleService.class
+-progi\service\UserService.class
+-progi\service\impl\VerificationServiceJPA.class
+-progi\domain\Coach.class
+-progi\domain\composite\ScheduleID.class
+-progi\domain\Schedule.class
+-progi\domain\VerificationToken.class
+-progi\rest\CoachController.class
+-progi\domain\Client.class
+-progi\repository\WorkoutRepository.class
+-progi\repository\GoalRepository.class
+-progi\rest\dto\CoachRegistration.class
+-progi\rest\dto\TrainingSchedules.class
+-progi\rest\dto\UserRegistration.class
+-progi\repository\UserRepository.class
+-progi\service\impl\ScheduleServiceJPA.class
+-progi\WebConfig.class
+-progi\repository\TrainingRepository.class
+-progi\service\impl\ClientServiceJPA.class
+-progi\domain\User.class
+-progi\rest\dto\Message.class
+-progi\rest\security\WebSecurityBasic.class
+-progi\rest\LoginController.class
+Index: ../Frontend/groupfitness_ui/src/components/createTraining.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Frontend/groupfitness_ui/src/components/createTraining.jsx b/../Frontend/groupfitness_ui/src/components/createTraining.jsx
+--- a/../Frontend/groupfitness_ui/src/components/createTraining.jsx	
++++ b/../Frontend/groupfitness_ui/src/components/createTraining.jsx	
+@@ -57,11 +57,11 @@
+             method: "POST",
+             headers: {
+               "Content-Type": "application/json; charset=UTF-8",
+-            },  
++            },
+             body: JSON.stringify(req_body)
+         };
+ 
+-        
++
+         fetch('http://localhost:8080/coach/workouts', options).then(response => {
+ 
+         if (response.status === 401) {
+@@ -92,11 +92,11 @@
+                   console.log(todo2);
+                 }
+                 //setTodos(newTodos)*/
+-                
+-            })            
++
++            })
+           }
+         });
+-    
++
+   }
+ 
+   function toggleTodo(workoutID) {
+@@ -136,7 +136,7 @@
+       },
+       body: JSON.stringify(data)
+     };
+-   
++   console.log(data)
+ 
+ /*      fetch('http://localhost:8080/registration/coach', options)
+         .then(response => {
+Index: target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst b/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst	
++++ b/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst	
+@@ -1,1 +1,1 @@
+-C:\FER\godina_3\semestar_5\ProgramskoInženjerstvo\GitRepo\group-fitness-planer\Backend\src\test\java\progi\BackendGroupfitnessplanerApplicationTests.java
++/home/Bajoob/Desktop/FER/5.semestar/PROGI/Projekt/group-fitness-planer/Backend/src/test/java/progi/BackendGroupfitnessplanerApplicationTests.java
+Index: backend-groupfitnessplaner.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend-groupfitnessplaner.iml b/backend-groupfitnessplaner.iml
+--- a/backend-groupfitnessplaner.iml	
++++ b/backend-groupfitnessplaner.iml	
+@@ -1,5 +1,27 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="web" name="Web">
++      <configuration>
++        <webroots />
++        <sourceRoots>
++          <root url="file://$MODULE_DIR$/src/main/java" />
++          <root url="file://$MODULE_DIR$/src/main/resources" />
++        </sourceRoots>
++      </configuration>
++    </facet>
++    <facet type="jpa" name="JPA">
++      <configuration>
++        <setting name="validation-enabled" value="true" />
++        <setting name="provider-name" value="Hibernate" />
++        <datasource-mapping />
++        <naming-strategy-map />
++      </configuration>
++    </facet>
++    <facet type="Spring" name="Spring">
++      <configuration />
++    </facet>
++  </component>
+   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+     <output url="file://$MODULE_DIR$/target/classes" />
+     <output-test url="file://$MODULE_DIR$/target/test-classes" />

@@ -1,0 +1,92 @@
+Index: src/test/java/progi/BackendGroupfitnessplanerApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/progi/BackendGroupfitnessplanerApplicationTests.java b/src/test/java/progi/BackendGroupfitnessplanerApplicationTests.java
+--- a/src/test/java/progi/BackendGroupfitnessplanerApplicationTests.java	
++++ b/src/test/java/progi/BackendGroupfitnessplanerApplicationTests.java	
+@@ -1,13 +1,82 @@
+ package progi;
+ 
++import org.junit.Assert;
++import org.junit.Before;
++import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
++import org.junit.runner.RunWith;
++import org.mockito.Mock;
++import org.mockito.junit.MockitoJUnit;
++import org.mockito.junit.MockitoJUnitRunner;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+ import org.springframework.boot.test.context.SpringBootTest;
++import progi.domain.Schedule;
++import progi.domain.Training;
++import progi.repository.ClientRepository;
++import progi.repository.CoachRepository;
++import progi.repository.ScheduleRepository;
++import progi.repository.TrainingRepository;
++import progi.rest.ClientController;
++import progi.rest.dto.ClientReservation;
++import progi.service.ClientService;
++import progi.service.CoachService;
++import progi.service.impl.ClientServiceJPA;
++
++import javax.persistence.EntityManager;
++
++import java.time.LocalDate;
++import java.time.format.DateTimeFormatter;
++
++import static org.mockito.Mockito.*;
+ 
+ @SpringBootTest
++@RunWith(MockitoJUnitRunner.class)
+ class BackendGroupfitnessplanerApplicationTests {
+ 
++	ClientService clientService;
++
++	CoachService coachService;
++
++	@Autowired
++	ClientRepository clientRepo;
++
++	@Mock
++	ScheduleRepository scheduleRepo;
++
++	@Autowired
++	TrainingRepository trainingRepo;
++
++	@Autowired
++	CoachRepository coachRepo;
++
++
++	@Autowired
++	EntityManager em;
++
++	@BeforeEach
++	public void setup(){
++		this.clientService = new ClientServiceJPA(trainingRepo, scheduleRepo, coachRepo, clientRepo, em);
++	}
++
++	@Test
++	void addReservationForTrainingThatDoesntExist(){
++		ClientReservation clientReservation = new ClientReservation(2L, 1L, "11.01.2023");
++		Exception ex = Assert.assertThrows(Exception.class,()->clientService.makeReservation(clientReservation));
++		Assert.assertEquals(ex.getMessage(), "Rezervacija ne postoji!");
++	}
+ 	@Test
+-	void contextLoads() {
++	void addReservationForNotAssignedTraining(){
++		ClientReservation clientReservation = new ClientReservation(2L, 1L, "11.01.2023");
++		LocalDate date = LocalDate.parse("11.01.2023", DateTimeFormatter.ofPattern("dd.MM.yyyy"));
++		when(scheduleRepo.getSchedule(1L, LocalDate.parse("11.01.2023", DateTimeFormatter.ofPattern("dd.MM.yyyy")))).thenReturn(new Schedule(new Training(),date, 1, 2));
++		Exception ex = Assert.assertThrows(Exception.class,()->clientService.makeReservation(clientReservation));
++		Assert.assertEquals(ex.getMessage(), "Pokušavate dodati rezervaciju za trening koji vam nije dodijeljen!");
++	}
++
++	@Test
++	void createTrainingWithoutBeingVerified(){
++
+ 	}
+ 
+ }
